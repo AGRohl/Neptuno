@@ -30,6 +30,10 @@ class Neptuno extends CI_Model {
             $query = $this->db->get('pedido');
             return $query->result();
         }
+        public function add_cliente($cliente)
+        {
+            $this->db->insert('cliente',$cliente);
+        }
 }
 
 

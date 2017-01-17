@@ -13,18 +13,32 @@ class Pedido extends CI_Controller
     public function __construct() 
     {
         parent::__construct();
-        $this->load->model('neptuno');
+        $this->load->model('Neptuno');
     }
-    public function cliente() //método para obtener listado clientes
+    public function index()
     {
-        $data['clientes'] = $this->neptuno->get_clientes();
         $data['title'] = 'Listado Clientes';
-        $this->load->view('listado_clientes',$data);
+        $this->load->view('cabecera', $data);
+        //$this->load->helper('url');
+        $data['clientes'] = $this->Neptuno->get_clientes();
+        $this->load->view('listado_clientes', $data);
+        $this->load->view('pie'); //no necesita pasarle los datos
     }
-    public function pedido()
+    public function cliente()
     {
-        $data['pedido']= $this->neptuno->get_pedidos();
-        $data['title'] = 'Listado de pedidos por cliente';
-        $this->load->view('listado_pedidos',$data);
+        $data['title'] = 'Listado Pedidos';
+        $this->load->view('cabecera', $data);
+        $this->load->helper('url'); //para manipular la url
+        $idCliente = $this->uri->segment(3); //el parámetro
+        $data['pedidos'] = $this->Neptuno->get_pedidos($idCliente);       
+        $this->load->view('listado_pedidos', $data);
+        $this->load->view('pie');
     }
+    
+    // public function pedido()
+    //{
+    //    $data['pedido']= $this->neptuno->get_pedidos();
+    //    $data['title'] = 'Listado de pedidos por cliente';
+    //    $this->load->view('listado_pedidos',$data);
+    //}
 }

@@ -19,9 +19,13 @@ class Welcome extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index()
-	{
-		$this->load->view('welcome_message');
-	}
+        {
+        $data['title'] = 'Listado Clientes';
+        $this->load->view('cabecera', $data);
+        $data['clientes'] = $this->Neptuno->get_clientes();
+        $this->load->view('listado_clientes', $data);
+        $this->load->view('pie'); //no necesita pasarle los datos
+        }
         public function ausias()
         {
                 $this->load->view('message_ausias');

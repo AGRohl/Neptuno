@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <?php echo $cliente->direccion; ?>
             </div>
             <div class="col-md-4">
-                <a href="<?php echo 'pedidos/cliente/'.$cliente->idCliente; ?>">pedidos</a>
+                <a href="<?php echo 'pedido/cliente/'.$cliente->idCliente; ?>">pedidos</a>
             </div>
         </div>
         <?php
