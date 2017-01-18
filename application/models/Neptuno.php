@@ -47,6 +47,13 @@ class Neptuno extends CI_Model {
         {
             $this->db->insert('cliente',$cliente);
         }
+        public function det_cliente($cliente)
+        {
+            $sql='Select codCliente,nombreCli,direccion,ciudad,region,cpostal,idPais,telefono,fax '
+                    . 'from cliente '
+                    . 'Where idCliente= '.$cliente;
+            $query = $this->db->query($sql);
+        }
 }
 
 

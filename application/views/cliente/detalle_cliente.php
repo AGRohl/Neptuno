@@ -16,24 +16,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <h2>
             <?php echo $title; ?>
         </h2>
-        <?php
-        foreach ($clientes as $cliente): ?>
+       
+        <div class="row">
+            <div class="col-md-6">
+                
+            </div>
+            <div class="col-md-6">
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                
+            </div>
+            <div class="col-md-6">
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                
+            </div>
+            <div class="col-md-6">
+                
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-4">
-                <?php echo $cliente->nombreCli; ?>
+                <?php echo $det_cliente->nombreCli; ?>
             </div>
             <div class="col-md-4">
-                <?php echo $cliente->direccion; ?>
+                <?php echo $det_cliente->direccion; ?>
             </div>
             <div class="col-md-2">
                 <a href="<?php echo 'pedido/lisped/'.$cliente->idCliente; ?>">pedidos</a>
             </div>
             <div class="col-md-2">
-                <a href="<?php echo 'pedido/cliente/'.$cliente->idCliente; ?>">detalle cliente</a>
+                <a href="<?php echo 'pedido/lisped/'.$cliente->idCliente; ?>">pedidos</a>
             </div>
         </div>
         <?php
-        endforeach;
+        //endforeach;
         ?>
     </div>
 </html>

@@ -44,5 +44,14 @@ class Pedido extends CI_Controller
         $this->load->view('detalle_pedido', $data);
         $this->load->view('pie');
     }
-    
+    public function cliente()
+    {
+        $data['title'] = 'Detalle del Cliente';
+        $this->load->view('cabecera', $data);
+        $this->load->helper('url'); //para manipular la url
+        $idCliente = $this->uri->segment(3); //el parámetro
+        $data['det_cliente'] = $this->Neptuno->det_cliente($idCliente);       
+        $this->load->view('detalle_cliente', $data);
+        $this->load->view('pie');
+    }
 }
