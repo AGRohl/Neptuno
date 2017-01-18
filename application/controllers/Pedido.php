@@ -24,7 +24,7 @@ class Pedido extends CI_Controller
         $this->load->view('listado_clientes', $data);
         $this->load->view('pie'); //no necesita pasarle los datos
     }
-    public function cliente()
+    public function lisped()
     {
         $data['title'] = 'Listado Pedidos';
         $this->load->view('cabecera', $data);
@@ -35,10 +35,5 @@ class Pedido extends CI_Controller
         $this->load->view('pie');
     }
     
-    // public function pedido()
-    //{
-    //    $data['pedido']= $this->neptuno->get_pedidos();
-    //    $data['title'] = 'Listado de pedidos por cliente';
-    //    $this->load->view('listado_pedidos',$data);
-    //}
+    
 }
