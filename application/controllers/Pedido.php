@@ -34,6 +34,15 @@ class Pedido extends CI_Controller
         $this->load->view('listado_pedidos', $data);
         $this->load->view('pie');
     }
-    
+    public function detalle()
+    {
+        $data['title'] = 'Listado Detalle Pedido';
+        $this->load->view('cabecera', $data);
+        $this->load->helper('url'); //para manipular la url
+        $idPedido = $this->uri->segment(3); //el parámetro
+        $data['detalles'] = $this->Neptuno->get_detalles($idPedido);       
+        $this->load->view('detalle_pedido', $data);
+        $this->load->view('pie');
+    }
     
 }

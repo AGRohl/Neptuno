@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <?php echo $pedido->cargosD; ?>
         </div>
         <div class="col-md-3">
-            <a href="<?php echo 'pedido/detalle/'.$pedido->idPedido; ?>">detalle</a>
+            <a href="<?php echo site_url('pedido/detalle/').$pedido->idPedido; ?>">detalle</a>
         </div>
     </div>
 <?php endforeach; ?>

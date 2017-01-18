@@ -30,6 +30,19 @@ class Neptuno extends CI_Model {
             $query = $this->db->get('pedido');
             return $query->result();
         }
+        public function get_detalles($pedido = FALSE)
+        {
+            if ($pedido !== FALSE)
+            {
+                $query = $this->db->query('Select d.idProducto, p.nombreProd, d.cantidad, d.precioE '
+                        . 'From detalle_pedido d, producto p '
+                        . 'Where d.idPedido ='.$pedido
+                        . ' and p.idProducto = d.idProducto');
+                //$this->db->where('idPedido',$pedido);
+            }
+            //$query = $this->db->get('detalle_pedido');
+            return $query->result();
+        }
         public function add_cliente($cliente)
         {
             $this->db->insert('cliente',$cliente);
