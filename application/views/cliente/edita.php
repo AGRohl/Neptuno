@@ -6,7 +6,7 @@
     <div class="form-group">
         <?php echo form_label('Nombre: ', 'nombreCli', $label_atr); ?>
         <div class="col-md-6">
-            <?php echo form_input(['name' => 'nombreCli', 'class' => 'form-control', 'placeholder' => 'Nombre del cliente']); ?>
+            <?php echo form_input(['name' => 'nombreCli', 'class' => 'form-control', 'value' => set_value($nombreCli)]); ?>
         </div>
     </div>
     <div class="form-group">

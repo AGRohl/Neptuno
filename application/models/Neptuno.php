@@ -36,7 +36,7 @@ class Neptuno extends CI_Model {
             {
                 $query = $this->db->query('Select d.idProducto, p.nombreProd, d.cantidad, d.precioE '
                         . 'From detalle_pedido d, producto p '
-                        . 'Where d.idPedido ='.$pedido
+                        . ' Where d.idPedido ='.$pedido
                         . ' and p.idProducto = d.idProducto');
                 //$this->db->where('idPedido',$pedido);
             }
@@ -47,12 +47,14 @@ class Neptuno extends CI_Model {
         {
             $this->db->insert('cliente',$cliente);
         }
-        public function det_cliente($cliente)
+        public function det_cliente($detcliente)
         {
-            $sql='Select codCliente,nombreCli,direccion,ciudad,region,cpostal,idPais,telefono,fax '
-                    . 'from cliente '
-                    . 'Where idCliente= '.$cliente;
+            $sql='Select codCliente,nombreCli,direccion,ciudad,region,cpostal,p.nombre as pais,telefono,fax '
+                    . ' From cliente c, pais p '
+                    . ' Where idCliente= '.$detcliente
+                    . ' and p.idPais=c.idPais';
             $query = $this->db->query($sql);
+            return $query->result();
         }
 }
 
