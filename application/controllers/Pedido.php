@@ -46,64 +46,15 @@ class Pedido extends CI_Controller
     }
     public function det_cliente()
     {
-        $this->load->helper('form');
-        $this->load->library('form_validation');
+        //$this->load->helper('form');
+        //$this->load->library('form_validation');
         $data['title'] = 'Detalle del Cliente';
-        $idCliente = $this->uri-segment(3);
-        $this->load->view('cabecera',$data);
-        $data['cliente'] = $this->Neptuno->det_cliente($idCliente);
-        $this->form_validation->set_rules('nombreCli', 'Nombre', 'required');
-        $this->form_validation->set_rules('codCliente', 'Código', 'required');
-        //if ($this->form_validation->run() === FALSE){
-            
-            $this->load->view('cliente/edita');
-            $this->load->view('pie');
-        //}
-        //else
-        /*{
-            $data = array(
-                'nombreCli' => $this->input->post('nombreCli'),
-                'codCliente' => $this->input->post('codCliente'),
-                'direccion' => $this->input->post('direccion'),
-                'ciudad' => $this->input->post('ciudad'),
-                'cpostal' => $this->input->post('cpostal'),
-                'idPais' => $this->input->post('idPais'),
-                'telefono' => $this->input->post('telefono'),
-                'fax' => $this->input->post('fax')
-            );
-            $this->neptuno->add_cliente($data);
-            $this->load->view('cliente/success');
-        }*/
-        
-    }
-    
-    public function alta_cliente()
-    {
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-        $data['title'] = 'Alta Nuevo Cliente';
-        $this->form_validation->set_rules('nombreCli', 'Nombre', 'required');
-        $this->form_validation->set_rules('codCliente', 'Código', 'required');
-        if ($this->form_validation->run() === FALSE){
-            $this->load->view('cabecera',$data);
-            $this->load->view('cliente/create');
-            $this->load->view('pie');
-        }
-        else
-        {
-            $data = array(
-                'nombreCli' => $this->input->post('nombreCli'),
-                'codCliente' => $this->input->post('codCliente'),
-                'direccion' => $this->input->post('direccion'),
-                'ciudad' => $this->input->post('ciudad'),
-                'cpostal' => $this->input->post('cpostal'),
-                'idPais' => $this->input->post('idPais'),
-                'telefono' => $this->input->post('telefono'),
-                'fax' => $this->input->post('fax')
-            );
-            $this->neptuno->add_cliente($data);
-            $this->load->view('cliente/success');
-        }
-        
+        //$this->form_
+        $this->load->view('cabecera', $data);
+        $this->load->helper('url'); //para manipular la url
+        $idCliente = $this->uri->segment(3); //el parámetro
+        $data['det_cliente'] = $this->Neptuno->det_cliente($idCliente);       
+        $this->load->view('cliente/detalle_cliente', $data);
+        $this->load->view('pie');
     }
 }

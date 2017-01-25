@@ -49,7 +49,7 @@ class Neptuno extends CI_Model {
         }
         public function det_cliente($detcliente)
         {
-            $sql='Select codCliente,nombreCli,direccion,ciudad,region,cpostal,p.nombre as pais,telefono,fax '
+            $sql='Select idCliente,codCliente,nombreCli,direccion,ciudad,region,cpostal,p.nombre as pais,p.idPais as idPais,telefono,fax '
                     . ' From cliente c, pais p '
                     . ' Where idCliente= '.$detcliente
                     . ' and p.idPais=c.idPais';
