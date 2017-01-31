@@ -44,7 +44,7 @@ class Pedido extends CI_Controller
         $this->load->view('detalle_pedido', $data);
         $this->load->view('pie');
     }
-    public function det_cliente()
+   /* public function det_cliente()
     {
         //$this->load->helper('form');
         //$this->load->library('form_validation');
@@ -56,5 +56,5 @@ class Pedido extends CI_Controller
         $data['det_cliente'] = $this->Neptuno->det_cliente($idCliente);       
         $this->load->view('cliente/detalle_cliente', $data);
         $this->load->view('pie');
-    }
+    }*/
 }

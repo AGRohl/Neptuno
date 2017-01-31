@@ -56,6 +56,10 @@ class Neptuno extends CI_Model {
             $query = $this->db->query($sql);
             return $query->result();
         }
+        public function update_cliente()
+        {
+            $this->db->update('cliente',$cliente);
+        }
 }
 
 

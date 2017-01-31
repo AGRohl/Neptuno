@@ -1,6 +1,6 @@
 <?php echo validation_errors('<div class="alert alert-danger">',"</div>"); ?>
 
-<?php echo form_open('cliente/add', ['class' => 'form-horizontal']); ?>
+<?php echo form_open('cliente/add_cliente', ['class' => 'form-horizontal']); ?>
 <br>
 <?php $label_atr = ['class' => 'col-sm-2 control-label']; ?>
     <div class="form-group">

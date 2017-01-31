@@ -26,13 +26,23 @@ class Cliente extends CI_Controller{
         $this->load->view('pie');
     }
     
-    public function add(){
+    public function add_cliente(){
         $this->load->helper('form');
+        $this->load->helper('url');
         $this->load->library('form_validation');
-        
+        $this->load->library('session'); // flashdata??
         $data['title']='Alta de Clientes';
-        $this->form_validation->set_rules('nombreCli', 'Nombre', 'required');
-        $this->form_validation->set_rules('codCliente', 'Código', 'required');
+        //$this->form_validation->set_rules('nombreCli', 'Nombre', 'required');
+        //$this->form_validation->set_rules('codCliente', 'Código', 'required');
+        $this->form_validation->set_rules('nombreCli', 'nombre del cliente', 'required', ['required'=>'No se te puede olvidar el %s']);
+        $this->form_validation->set_rules('codCliente', 'código de cliente', 'required|exact_length[5]|alpha|is_unique[cliente.codCliente]|strtoupper');
+        $this->form_validation->set_rules('direccion', 'dirección del cliente', 'required|trim');
+        $this->form_validation->set_rules('ciudad', 'ciudad del cliente', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('cpostal', 'código postal', 'required|exact_length[5]|numeric');
+        $this->form_validation->set_rules('idPais', 'código de país del cliente', 'required|exact_length[3]|strtoupper|alpha|in_list[USA,ESP,FRA,POR,DEU,FIN]');
+        $this->form_validation->set_rules('telefono', 'teléfono del cliente', 'required|numeric');
+        $this->form_validation->set_rules('fax', 'fax del cliente', 'required|numeric');
+
         if ($this->form_validation->run() === FALSE){
             $this->load->view('cabecera',$data);
             $this->load->view('cliente/create');
@@ -51,10 +61,13 @@ class Cliente extends CI_Controller{
                 'fax' => $this->input->post('fax')
             );
             $this->Neptuno->add_cliente($data);
+            $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Cliente añadido satisfactoriamente</div>');
+            redirect(current_url());
             $this->load->view('cliente/success');
+            
         }
     }
-    public function edit(){
+    public function edit_cliente(){
         $this->load->helper('form');
         $this->load->library('form_validation');
         $data['title']='Edición de Clientes';

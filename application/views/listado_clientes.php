@@ -12,10 +12,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     </head>
+    <br/>
     <div class="container">
-        <h2>
-            <?php echo $title; ?>
-        </h2>
+        <div class="row">
+            <div class="col-md-4">
+                <p class="lead">
+                    <?php echo $title; ?>
+                </p>
+            </div>
+            <div class="col-md-8 ">
+                <a href="<?php echo 'cliente/add_cliente/';?>" class="btn btn-primary centered" role="button">Añadir</a>
+            </div>
+        </div>
+        <div class="row">
+            <!-- <div class="col-md-8 ">
+                <a href="<?php// echo 'cliente/add_cliente/';?>" class="btn btn-primary" role="button">Añadir</a>
+            </div>-->
+            
+        
+        </div>
+        <br/>
         <?php
         foreach ($clientes as $cliente): ?>
         <div class="row">
