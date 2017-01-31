@@ -5,6 +5,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+/*
+ * Controlador principal
+ */
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -15,16 +18,16 @@ class Pedido extends CI_Controller
         parent::__construct();
         $this->load->model('Neptuno');
     }
-    public function index()
+    public function index() //método de inicio
     {
-        $data['title'] = 'Listado Clientes';
-        $this->load->view('cabecera', $data);
+        $data['title'] = 'Listado Clientes'; // variable de título
+        $this->load->view('cabecera', $data); // cargamos vista cabecera
         //$this->load->helper('url');
-        $data['clientes'] = $this->Neptuno->get_clientes();
+        $data['clientes'] = $this->Neptuno->get_clientes(); //
         $this->load->view('listado_clientes', $data);
         $this->load->view('pie'); //no necesita pasarle los datos
     }
-    public function lisped()
+    public function lisped() // método listado de pedidos
     {
         $data['title'] = 'Listado Pedidos';
         $this->load->view('cabecera', $data);
@@ -44,17 +47,5 @@ class Pedido extends CI_Controller
         $this->load->view('detalle_pedido', $data);
         $this->load->view('pie');
     }
-   /* public function det_cliente()
-    {
-        //$this->load->helper('form');
-        //$this->load->library('form_validation');
-        $data['title'] = 'Detalle del Cliente';
-        //$this->form_
-        $this->load->view('cabecera', $data);
-        $this->load->helper('url'); //para manipular la url
-        $idCliente = $this->uri->segment(3); //el parámetro
-        $data['det_cliente'] = $this->Neptuno->det_cliente($idCliente);       
-        $this->load->view('cliente/detalle_cliente', $data);
-        $this->load->view('pie');
-    }*/
+   
 }
